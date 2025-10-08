@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:room_meeting_app/controller/global_binding.dart';
 import 'package:room_meeting_app/core/routes/app_pages.dart';
 import 'package:room_meeting_app/core/routes/app_routes.dart';
 
@@ -16,20 +17,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'YouApp.Ai',
+      title: 'Room Meeting App',
+      initialBinding: AppBinding(),
       initialRoute: AppRoutes.splash,
       getPages: AppPages.routes,
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromRGBO(9, 20, 26, 1),
+        scaffoldBackgroundColor: Color.fromRGBO(249, 246, 243, 1),
         appBarTheme: AppBarTheme(
-            backgroundColor: Color.fromRGBO(9, 20, 26, 1),
-            centerTitle: true,
-            titleTextStyle: TextStyle(color: Colors.white),
+            backgroundColor: Colors.white,
+            toolbarHeight: 100,
+            titleTextStyle: TextStyle(color: Colors.black),
             elevation: 0,
             iconTheme: IconThemeData(
-              color: Colors.white,
+              color: Colors.black,
             )),
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
     );
   }

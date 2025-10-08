@@ -8,4 +8,7 @@ class ApiEndPoint{
   static const String registerUrl = '$baseUrl/auth/register';
   static const String loginUrl = '$baseUrl/auth/login';
 
+  // room
+  static const String roomUrl = '$baseUrl/public/rooms';
+
 }

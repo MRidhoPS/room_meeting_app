@@ -7,12 +7,11 @@ import 'package:room_meeting_app/presentation/pages/auth/viewmodels/auth_control
 class AuthBinding extends Bindings {
   @override
   void dependencies() {
-    final apiProvider = ApiProvider();
 
-    final remoteDataSource = AuthRemoteDataSource(apiProvider);
-
-    final repository = AuthRepository(remoteDataSource);
-
-    Get.put(AuthController(repository));
+    Get.lazyPut(() => AuthRemoteDataSource(Get.find<ApiProvider>()),
+        fenix: true);
+    Get.lazyPut(() => AuthRepository(Get.find<AuthRemoteDataSource>()),
+        fenix: true);
+    Get.lazyPut(() => AuthController(Get.find<AuthRepository>()), fenix: true);
   }
 }

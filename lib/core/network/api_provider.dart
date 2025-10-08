@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:room_meeting_app/core/storage/local_storage.dart';
-import 'dart:html' as html;
+// import 'package:room_meeting_app/core/storage/local_storage.dart';
 
 class ApiProvider {
   late Dio dio;
@@ -17,20 +16,20 @@ class ApiProvider {
       ),
     );
 
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final token = await LocalStorage.getToken();
+    // dio.interceptors.add(
+    //   InterceptorsWrapper(
+    //     onRequest: (options, handler) async {
+    //       final token = await LocalStorage.getToken();
 
-          if (token != null && token.isNotEmpty) {
-            options.headers['x-access-token'] = token;
-            html.window.localStorage['token'] = token;
-          }
+    //       if (token != null && token.isNotEmpty) {
+    //         options.headers['x-access-token'] = token;
+    //         html.window.localStorage['token'] = token;
+    //       }
 
-          return handler.next(options);
-        },
-      ),
-    );
+    //       return handler.next(options);
+    //     },
+    //   ),
+    // );
 
     dio.interceptors.add(
       LogInterceptor(
