@@ -23,6 +23,8 @@ class RoomModel {
 class RoomData {
   final int id;
   final String name;
+  final String address;
+  final String city;
   final int capacity;
   final String price;
   final String thumbnail;
@@ -30,6 +32,8 @@ class RoomData {
   RoomData({
     required this.id,
     required this.name,
+    required this.address,
+    required this.city,
     required this.capacity,
     required this.price,
     required this.thumbnail,
@@ -39,6 +43,8 @@ class RoomData {
     return RoomData(
       id: json['id'],
       name: json['name'],
+      address: json['address'],
+      city: json['city'],
       capacity: json['capacity'],
       price: json['hourly_price'],
       thumbnail: json['thumbnail_photo'],
@@ -69,6 +75,8 @@ class RoomDetailedModel {
 class RoomDetailedData {
   final int id;
   final String name;
+  final String address;
+  final String city;
   final int capacity;
   final int price;
   final String decription;
@@ -78,6 +86,8 @@ class RoomDetailedData {
   RoomDetailedData({
     required this.id,
     required this.name,
+    required this.address,
+    required this.city,
     required this.capacity,
     required this.price,
     required this.decription,
@@ -90,6 +100,8 @@ class RoomDetailedData {
       id: json['id'],
       name: json['name'],
       capacity: json['capacity'],
+      address: json['address'],
+      city: json['city'],
       price: json['hourly_price'],
       decription: json['decription'],
       photos: List<String>.from(json['photos']),

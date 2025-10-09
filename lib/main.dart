@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color.fromRGBO(249, 246, 243, 1),
         appBarTheme: AppBarTheme(
             backgroundColor: Colors.white,
-            toolbarHeight: 100,
+            toolbarHeight: 80,
             titleTextStyle: TextStyle(color: Colors.black),
             elevation: 0,
             iconTheme: IconThemeData(
