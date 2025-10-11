@@ -4,4 +4,5 @@ class AppRoutes {
   static const splash = '/splash';
   static const register = '/register';
   static const detailedRoom = '/detailedRoom';
+  static const scheduledRoom = '/scheduledRoom';
 }

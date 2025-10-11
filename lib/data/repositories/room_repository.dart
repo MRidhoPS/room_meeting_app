@@ -19,4 +19,9 @@ class RoomRepository {
     final data = remoteDataSource.getDetailedRoom(id: id);
     return data;
   }
+
+  Future<RoomAvailabilityModel> getScheduledRoom({required int id, required String date})async{
+    final data = remoteDataSource.getScheduledRoom(id: id, date: date);
+    return data;
+  }
 }

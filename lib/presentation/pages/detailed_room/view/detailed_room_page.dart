@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:room_meeting_app/controller/app_controller.dart';
+import 'package:room_meeting_app/core/routes/app_routes.dart';
 import 'package:room_meeting_app/presentation/pages/detailed_room/viewmodels/detailed_room_controller.dart';
 
 class DetailedRoomPage extends GetView<DetailedRoomController> {
@@ -152,13 +153,19 @@ class DetailedRoomPage extends GetView<DetailedRoomController> {
                           width: double.infinity,
                           height: 50,
                           child: ElevatedButton(
-                            
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(
+                                AppRoutes.scheduledRoom,
+                                arguments: {
+                                  'id': data.id,
+                                'date': DateTime.now().toIso8601String().split('T').first,
+                                }
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
-                            
                                 backgroundColor: Colors.green.shade800),
                             child: Text(
-                              "Book",
+                              "Next",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -295,9 +302,7 @@ class RoomImageCard extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(horizontal: 3),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: isActive
-                                ? Colors.white
-                                : Colors.white.withOpacity(0.5),
+                            color: isActive ? Colors.white : Colors.white54,
                           ),
                         ),
                       );
