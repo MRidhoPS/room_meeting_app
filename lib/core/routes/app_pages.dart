@@ -3,6 +3,8 @@ import 'package:room_meeting_app/core/routes/app_routes.dart';
 import 'package:room_meeting_app/presentation/pages/auth/bindings/auth_binding.dart';
 import 'package:room_meeting_app/presentation/pages/auth/view/login_page.dart';
 import 'package:room_meeting_app/presentation/pages/auth/view/register_page.dart';
+import 'package:room_meeting_app/presentation/pages/detailed_room/view/detailed_room_binding.dart';
+import 'package:room_meeting_app/presentation/pages/detailed_room/view/detailed_room_page.dart';
 import 'package:room_meeting_app/presentation/pages/home/bindings/home_binding.dart';
 import 'package:room_meeting_app/presentation/pages/home/view/home_page.dart';
 import 'package:room_meeting_app/presentation/pages/splash/bindings/splash_binding.dart';
@@ -31,6 +33,11 @@ class AppPages {
         AuthBinding(),
         HomeBinding(),
       ],
+    ),
+    GetPage(
+      name: AppRoutes.detailedRoom,
+      page: () => const DetailedRoomPage(),
+      binding: DetailedRoomBinding(),
     ),
   ];
 }

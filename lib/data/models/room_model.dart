@@ -79,7 +79,7 @@ class RoomDetailedData {
   final String city;
   final int capacity;
   final int price;
-  final String decription;
+  final String description;
   final List<String> photos;
   final List<String> facilities;
 
@@ -90,7 +90,7 @@ class RoomDetailedData {
     required this.city,
     required this.capacity,
     required this.price,
-    required this.decription,
+    required this.description,
     required this.photos,
     required this.facilities,
   });
@@ -103,7 +103,7 @@ class RoomDetailedData {
       address: json['address'],
       city: json['city'],
       price: json['hourly_price'],
-      decription: json['decription'],
+      description: json['description'],
       photos: List<String>.from(json['photos']),
       facilities: List<String>.from(json['facilities']),
     );

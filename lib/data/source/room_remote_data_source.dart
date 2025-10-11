@@ -20,4 +20,17 @@ class RoomRemoteDataSource {
       throw Exception(e.response?.data['message'] ?? "Error");
     }
   }
+
+  Future<RoomDetailedModel> getDetailedRoom({
+    required int id,
+  }) async {
+    try {
+      final result = await apiProvider.dio.get("${ApiEndPoint.roomUrl}/$id");
+
+      return RoomDetailedModel.fromJson(result.data);
+    } on DioException catch (e) {
+      print(e.response?.data);
+      throw Exception(e.response?.data['message'] ?? "Error");
+    }
+  }
 }

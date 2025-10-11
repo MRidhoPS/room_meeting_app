@@ -14,4 +14,9 @@ class RoomRepository {
 
     return data;
   }
+
+  Future<RoomDetailedModel> getDetailedRoom({required int id})async{
+    final data = remoteDataSource.getDetailedRoom(id: id);
+    return data;
+  }
 }

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:room_meeting_app/controller/app_controller.dart';
+import 'package:room_meeting_app/core/routes/app_routes.dart';
 import 'package:room_meeting_app/data/models/room_model.dart';
 import 'package:room_meeting_app/presentation/pages/home/viewmodels/home_controller.dart';
 
@@ -40,9 +41,15 @@ class ListRooms extends StatelessWidget {
           itemCount: rooms.length,
           itemBuilder: (context, index) {
             final room = rooms[index];
-            return RoomCard(
-              key: ValueKey(room.id),
-              room: room,
+            return GestureDetector(
+              onTap: () => Get.toNamed(
+                AppRoutes.detailedRoom,
+                arguments: room.id,
+              ),
+              child: RoomCard(
+                key: ValueKey(room.id),
+                room: room,
+              ),
             );
           },
         );
@@ -61,7 +68,7 @@ class RoomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       width: double.infinity,
@@ -86,8 +93,9 @@ class RoomCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     child: CachedNetworkImage(
                       imageUrl: room.thumbnail,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                       placeholder: (context, url) => Container(
+                        width: double.infinity,
                         color: Colors.grey.shade200,
                         alignment: Alignment.center,
                         child: const CircularProgressIndicator(strokeWidth: 2),
