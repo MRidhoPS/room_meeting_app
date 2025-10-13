@@ -113,11 +113,13 @@ class RoomDetailedData {
 class RoomAvailabilityModel {
   final int status;
   final String message;
-  final RoomAvailabilityData data;
+  final String roomId;
+  final List<RoomAvailabilityData> data;
 
   RoomAvailabilityModel({
     required this.status,
     required this.message,
+    required this.roomId,
     required this.data,
   });
 
@@ -125,7 +127,10 @@ class RoomAvailabilityModel {
     return RoomAvailabilityModel(
       status: json['status'],
       message: json['message'],
-      data: RoomAvailabilityData.fromJson(json['data']),
+      roomId: json['roomId'],
+      data: (json['data'] as List)
+          .map((item) => RoomAvailabilityData.fromJson(item))
+          .toList(),
     );
   }
 
@@ -133,25 +138,23 @@ class RoomAvailabilityModel {
     return {
       'status': status,
       'message': message,
-      'data': data.toJson(),
+      'roomId': roomId,
+      'data': data.map((e) => e.toJson()).toList(),
     };
   }
 }
 
 class RoomAvailabilityData {
-  final String roomId;
   final String date;
   final List<AvailabilitySlot> availability;
 
   RoomAvailabilityData({
-    required this.roomId,
     required this.date,
     required this.availability,
   });
 
   factory RoomAvailabilityData.fromJson(Map<String, dynamic> json) {
     return RoomAvailabilityData(
-      roomId: json['roomId'],
       date: json['date'],
       availability: (json['availability'] as List)
           .map((item) => AvailabilitySlot.fromJson(item))
@@ -161,7 +164,6 @@ class RoomAvailabilityData {
 
   Map<String, dynamic> toJson() {
     return {
-      'roomId': roomId,
       'date': date,
       'availability': availability.map((e) => e.toJson()).toList(),
     };

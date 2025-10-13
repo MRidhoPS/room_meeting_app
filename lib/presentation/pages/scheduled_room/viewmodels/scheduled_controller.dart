@@ -9,7 +9,10 @@ class RoomAvailabilityController extends GetxController {
 
   RxBool isLoading = false.obs;
   RxString errorMessage = ''.obs;
-  Rxn<RoomAvailabilityData> roomAvailability = Rxn<RoomAvailabilityData>();
+  RxInt selectedDateIndex = 0.obs;
+  RxList<RoomAvailabilityData> roomAvailabilityList =
+      <RoomAvailabilityData>[].obs;
+
 
   @override
   void onInit() {
@@ -25,14 +28,16 @@ class RoomAvailabilityController extends GetxController {
 
   Future<void> getRoomAvailability({
     required int roomId,
-    required String date,
+    required String date, // make optional
   }) async {
     try {
       isLoading.value = true;
       errorMessage.value = '';
-      final result =
-          await repository.getScheduledRoom(id: roomId, date: date);
-      roomAvailability.value = result.data;
+
+      final result = await repository.getScheduledRoom(id: roomId, date: date);
+
+      // Because `result.data` is now a list
+      roomAvailabilityList.assignAll(result.data);
     } catch (e) {
       errorMessage.value = e.toString();
     } finally {
