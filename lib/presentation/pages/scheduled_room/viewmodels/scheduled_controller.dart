@@ -13,6 +13,54 @@ class RoomAvailabilityController extends GetxController {
   RxList<RoomAvailabilityData> roomAvailabilityList =
       <RoomAvailabilityData>[].obs;
 
+  RxList roomBookData = [].obs;
+  RxBool isSelected = true.obs;
+
+  void selectedDate() {
+    isSelected.value = !isSelected.value;
+  }
+
+  // in RoomAvailabilityController
+
+// reactive list for per-slot selection
+  RxList<bool> isSelectedList = <bool>[].obs;
+
+// initialize list to exact length (resets to all false)
+  void initializeSelectedList(int length) {
+    isSelectedList.value = List.generate(length, (_) => false);
+  }
+
+// toggle a single index
+  void toggleSelected(int index) {
+    if (index < 0 || index >= isSelectedList.length) return;
+    isSelectedList[index] = !isSelectedList[index];
+    isSelectedList.refresh();
+  }
+
+// optional: make single-select (uncomment if you want)
+  void selectSingleSlot(int index) {
+    if (index < 0 || index >= isSelectedList.length) return;
+    for (var i = 0; i < isSelectedList.length; i++) {
+      isSelectedList[i] = i == index;
+    }
+    isSelectedList.refresh();
+  }
+
+// call this after you assign roomAvailabilityList
+// e.g. after roomAvailabilityList.assignAll(result.data)
+  void ensureInitForSelectedDay() {
+    if (roomAvailabilityList.isEmpty) return;
+    final selectedDay = roomAvailabilityList[selectedDateIndex.value];
+    initializeSelectedList(selectedDay.availability.length);
+  }
+
+// when user changes the date index
+  void changeSelectedDate(int index) {
+    if (index < 0 || index >= roomAvailabilityList.length) return;
+    selectedDateIndex.value = index;
+    initializeSelectedList(roomAvailabilityList[index].availability.length);
+  }
+
 
   @override
   void onInit() {
@@ -23,6 +71,18 @@ class RoomAvailabilityController extends GetxController {
         roomId: args['id'],
         date: args['date'].toString(),
       );
+    }
+  }
+
+  void roomBookTempo(String data) async {
+    try {
+      if (data.isEmpty) return;
+
+      roomBookData.add(data);
+
+      print(roomBookData);
+    } catch (e) {
+      print(e);
     }
   }
 
