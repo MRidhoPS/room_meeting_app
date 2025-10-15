@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:room_meeting_app/core/routes/app_routes.dart';
 import 'package:room_meeting_app/presentation/pages/scheduled_room/viewmodels/scheduled_controller.dart';
 
 class ScheduledRoomPage extends GetView<RoomAvailabilityController> {
@@ -154,7 +155,9 @@ class ScheduledRoomPage extends GetView<RoomAvailabilityController> {
                         : Colors.green.shade600;
                     final Color textColor = !isAvailable
                         ? Colors.grey.shade600
-                        : isSelected ? Colors.white : Colors.black;
+                        : isSelected
+                            ? Colors.white
+                            : Colors.black;
 
                     return GestureDetector(
                       onTap: isAvailable
@@ -200,6 +203,7 @@ class ScheduledRoomPage extends GetView<RoomAvailabilityController> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      Get.toNamed(AppRoutes.paymentRoom);
                       debugPrint(
                           'Next pressed, selected times: ${controller.roomBookData}');
                     },

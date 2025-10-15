@@ -5,4 +5,6 @@ class AppRoutes {
   static const register = '/register';
   static const detailedRoom = '/detailedRoom';
   static const scheduledRoom = '/scheduledRoom';
+  static const paymentRoom = '/paymentRoom';
+  static const paymentDetailedRoom = '/paymentDetailedRoom';
 }

@@ -7,6 +7,9 @@ import 'package:room_meeting_app/presentation/pages/detailed_room/bindings/detai
 import 'package:room_meeting_app/presentation/pages/detailed_room/view/detailed_room_page.dart';
 import 'package:room_meeting_app/presentation/pages/home/bindings/home_binding.dart';
 import 'package:room_meeting_app/presentation/pages/home/view/home_page.dart';
+import 'package:room_meeting_app/presentation/pages/payment_method/bindings/payment_binding.dart';
+import 'package:room_meeting_app/presentation/pages/payment_method/view/payment_detailed_page.dart';
+import 'package:room_meeting_app/presentation/pages/payment_method/view/payment_page.dart';
 import 'package:room_meeting_app/presentation/pages/scheduled_room/bindings/scheduled_binding.dart';
 import 'package:room_meeting_app/presentation/pages/scheduled_room/view/scheduled_room_page.dart';
 import 'package:room_meeting_app/presentation/pages/splash/bindings/splash_binding.dart';
@@ -46,5 +49,20 @@ class AppPages {
       page: () => const ScheduledRoomPage(),
       binding: ScheduledBinding(),
     ),
+    GetPage(
+      name: AppRoutes.paymentRoom,
+      page: () => const PaymentPage(),
+      binding: PaymentBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.paymentDetailedRoom,
+      page: () => const PaymentDetailedPage(),
+      bindings: [
+        PaymentBinding(),
+        ScheduledBinding(),
+        DetailedRoomBinding(),
+        AuthBinding(),
+      ],
+    )
   ];
 }

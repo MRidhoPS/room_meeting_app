@@ -10,6 +10,7 @@ class RoomAvailabilityController extends GetxController {
   RxBool isLoading = false.obs;
   RxString errorMessage = ''.obs;
   RxInt selectedDateIndex = 0.obs;
+    Rxn<DateTime> selectedDateValue = Rxn<DateTime>(); 
   RxList<RoomAvailabilityData> roomAvailabilityList =
       <RoomAvailabilityData>[].obs;
 
@@ -58,6 +59,8 @@ class RoomAvailabilityController extends GetxController {
   void changeSelectedDate(int index) {
     if (index < 0 || index >= roomAvailabilityList.length) return;
     selectedDateIndex.value = index;
+    final selectedDay = roomAvailabilityList[index];
+    selectedDateValue.value = DateTime.parse(selectedDay.date);
     initializeSelectedList(roomAvailabilityList[index].availability.length);
   }
 
