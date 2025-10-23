@@ -14,6 +14,7 @@ import 'package:room_meeting_app/presentation/pages/scheduled_room/bindings/sche
 import 'package:room_meeting_app/presentation/pages/scheduled_room/view/scheduled_room_page.dart';
 import 'package:room_meeting_app/presentation/pages/splash/bindings/splash_binding.dart';
 import 'package:room_meeting_app/presentation/pages/splash/view/splash_page.dart';
+import 'package:room_meeting_app/presentation/pages/success/view/success_page.dart';
 
 class AppPages {
   static final routes = [
@@ -63,6 +64,11 @@ class AppPages {
         DetailedRoomBinding(),
         AuthBinding(),
       ],
-    )
+    ),
+    GetPage(
+      name: AppRoutes.successRoom,
+      page: () => const SuccessPage(),
+      binding: PaymentBinding(),
+    ),
   ];
 }

@@ -2,7 +2,7 @@ class ApiEndPoint{
 
   ApiEndPoint._();
 
-  static const String baseUrl = 'http://10.152.105.5:7000/roomapp';
+  static const String baseUrl = 'http://192.168.53.5:7000/roomapp';
 
   // Auth
   static const String registerUrl = '$baseUrl/auth/register';
@@ -10,5 +10,8 @@ class ApiEndPoint{
 
   // room
   static const String roomUrl = '$baseUrl/public/rooms';
+
+  // booking
+  static const String bookingUrl = '$baseUrl/booking';
 
 }

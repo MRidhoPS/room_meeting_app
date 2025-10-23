@@ -7,4 +7,5 @@ class AppRoutes {
   static const scheduledRoom = '/scheduledRoom';
   static const paymentRoom = '/paymentRoom';
   static const paymentDetailedRoom = '/paymentDetailedRoom';
+  static const successRoom = '/success';
 }
